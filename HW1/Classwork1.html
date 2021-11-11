@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classwork1</title>
+</head>
+<body>
+
+<script>
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+    let result = [getRandomInt(10),getRandomInt(10),getRandomInt(10),getRandomInt(10),getRandomInt(10),getRandomInt(10),getRandomInt(10),getRandomInt(10),getRandomInt(10),getRandomInt(10)];
+    console.log(result);
+    result = result[0] + result[1] + result[2] + result[3] + result[4] + result[5] + result[6] + result[7] + result[8] + result[9];
+    console.log(result);
+
+    let book0 = {
+        name: 'Twenty Thousand Leagues Under the Seas',
+        genre: 'sci-fi',
+        pageN: 464
+    }
+    console.log(book0);
+
+    let book1 = {
+        name: 'Journey to the Center of the Earth',
+        genre: 'sci-fi',
+        pageN: 348,
+        author: 'Jules Verne'
+    }
+    console.log(book1);
+
+    let books = [book0, book1];
+    console.log(books);
+
+    let rectangle = {
+        height : 10,
+        width : 23
+    }
+    let s = rectangle.height * rectangle.width;
+    console.log(`Площа прямокутника = ${s} см квадратних`);
+
+    let cylinder = {
+            heightC : 10,
+            dC : 4
+        }
+    let v = Math.PI * cylinder.heightC * cylinder.dC**2;
+    console.log(`Об'єм циліндра = ${v} м кубічних`);
+
+    let triangle = {
+            n : 3,
+            m : 4
+        }
+    let k = Math.sqrt(Math.pow(triangle.m,2) + Math.pow(triangle.n,2));
+    console.log(`Гіпотенуза трикутника за теоремою Піфагора = ${k}`);
+
+</script>
+</body>
+</html>
