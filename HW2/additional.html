@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Additional2</title>
+</head>
+<body>
+
+<script>
+
+  let friends = ["Ivan", "Slavik", "Grisha", "Lera", "Ira"];
+  if (friends[3]) {
+    console.log('це великий  масив, в якому більше 3-х елементів')
+  }
+  else {
+    console.log('це маленький масив, в якому менше 3-х елементів')
+  }
+
+  //
+  // let firstNumber = +prompt("Введіть перше число");
+  // let secondNumber = +prompt("Введіть друге число");
+  // let thirdNumber = +prompt("Введіть третє число");
+  // if (firstNumber === secondNumber && firstNumber === thirdNumber && secondNumber === thirdNumber) {
+  //   console.log(`${firstNumber} = ${secondNumber} = ${thirdNumber}`)
+  // }
+  // else if (firstNumber > secondNumber && firstNumber > thirdNumber && secondNumber > thirdNumber) {
+  //   console.log(secondNumber)
+  // }
+  // else if (firstNumber < secondNumber && firstNumber < thirdNumber && secondNumber < thirdNumber) {
+  //   console.log(secondNumber)
+  // }
+  // else if (firstNumber > secondNumber && firstNumber < thirdNumber && secondNumber < thirdNumber) {
+  //   console.log(firstNumber)
+  // }
+  // else if (firstNumber < secondNumber && firstNumber > thirdNumber && secondNumber > thirdNumber) {
+  //   console.log(firstNumber)
+  // }
+  // else if (firstNumber < secondNumber && firstNumber < thirdNumber && secondNumber > thirdNumber) {
+  //   console.log(thirdNumber)
+  // }
+  // else if (firstNumber > secondNumber && firstNumber > thirdNumber && secondNumber < thirdNumber) {
+  //   console.log(thirdNumber)
+  // }
+  // else if (firstNumber === secondNumber || firstNumber === thirdNumber || secondNumber === thirdNumber) {
+  //   console.log("Немає середнього")
+  // }
+  // else {console.log(NaN)}
+
+  //
+  // +(+prompt("Введіть: a") + +prompt("Введіть: b")) < 4 ? console.log("Мало") : console.log("Багато");
+
+  //
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум і мінімум включаються
+  }
+  let xxx = getRandomIntInclusive(-100,100)
+
+  xxx > 0 ? console.log(`${xxx} — Додатнє`) : console.log(`${xxx} — Від'ємне або нуль`);
+
+</script>
+</body>
+</html>
