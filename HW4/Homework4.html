@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework4</title>
+</head>
+<body>
+<script>
+    //    //  - створити функцію яка обчислює та повертає площу прямокутника зі сторонами а і б
+
+    let a = Math.ceil(Math.random() * 10);
+    let b = Math.ceil(Math.random() * 10);
+    console.log(`Площа прямокутника зі сторонами а = ${a} і б = ${b}`)
+
+    function sAB(sA, sB) {
+        console.log(sA * sB)
+    }
+
+    sAB(a, b);
+
+    //    //  - створити функцію яка обчислює та повертає площу кола з радіусом r
+
+    let r = Math.ceil(Math.random() * 10);
+    console.log(`Площа круга з радіусом R = ${r}`)
+
+    function sPiR(R) {
+        console.log(Math.PI * (R ** 2))
+    }
+
+    sPiR(r)
+
+    //    //  - створити функцію яка обчислює та повертає площу циліндру висотою h, та радіуcом r
+
+    let h = Math.ceil(Math.random() * 10);
+    console.log(`Площа циліндра висотою H = ${h} радіусом R = ${r}`)
+
+    function s2PiRH(R, H) {
+        console.log(2 * Math.PI * R * H)
+    }
+
+    s2PiRH(r, h)
+
+    //     // - створити функцію яка приймає масив та виводить кожен його елемент
+
+    let array = [h, r, b, a];
+
+    function arr(array) {
+        for (let i = array.length - 1; i >= 0; i--) {
+            console.log(array[i])
+        }
+    }
+
+    arr(array)
+
+    //    //  - створити функцію яка створює параграф з текстом. Текст задати через аргумент
+    function pText(pText) {
+        document.write(`<p>${pText}</p>`)
+    }
+
+    pText(`${Math.round(Math.random()) !== 1}`)
+
+    // // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий
+
+    function ul3li(ul3li) {
+        document.write(`<ul><li>${ul3li}</li><li>${ul3li}</li><li>${ul3li}</li></ul>`)
+    }
+
+    ul3li(`${Math.round(Math.random()) === 1}`)
+
+    //    //  - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+
+    function ul3liNum(liText,liNum) {
+        document.write(`<ul>`);
+        for (let i = 0; i < liNum; i++) {
+            document.write(`<li>${liText}</li>`)
+        }
+        document.write(`</ul>`)
+    }
+
+    ul3liNum(`${Math.round(Math.random())!==1}`,`${Math.ceil(Math.random() * 4)}`)
+
+    // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
+    let arrayPrim = [Math.round(Math.random()), Math.round(Math.random()) !== 1, 'String'];
+    console.log(arrayPrim);
+
+    function arrayPrimitive() {
+        document.write("<ul>");
+        for (let i of arrayPrim) {
+            document.write(`<li>${i}</li>`)
+        }
+        document.write("</ul>")
+    }
+
+    arrayPrimitive();
+    // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об'єкту окремий блок.
+    let arrayObj = [
+        {id: Math.ceil(Math.random() * 4), name: Math.round(Math.random()) === 1, age: Math.ceil(Math.random() * 100)},
+        {id: Math.ceil(Math.random() * 4), name: Math.round(Math.random()) === 1, age: Math.ceil(Math.random() * 100)},
+        {id: Math.ceil(Math.random() * 4), name: Math.round(Math.random()) === 1, age: Math.ceil(Math.random() * 100)}]
+    console.log(arrayObj);
+
+    function arrayObject() {
+        for (let i = 0; i < arrayObj.length; i++) {
+            document.write(arrayObj[i].id + " " + arrayObj[i].name + " " + arrayObj[i].age + " | ")
+        }
+    }
+
+    arrayObject()
+    console.log(Math.round(Math.random()))
+</script>
+</body>
+</html>
