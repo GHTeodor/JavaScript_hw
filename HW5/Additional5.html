@@ -9,11 +9,11 @@
 </head>
 <body>
 <script>
-    let random = (min,max) => Math.round(Math.random()*(max-min)+min)
-    a = random(50,100);
-    b = random(50,100);
-    n = random(1,10);
-    console.log("n=",n," A=",a," B=",b)
+    let random = (min, max) => Math.round(Math.random() * (max - min) + min)
+    a = random(50, 100);
+    b = random(50, 100);
+    n = random(1, 10);
+    // console.log("n=", n, " A=", a, " B=", b)
     document.write(`n=${n} A=${a} B=${b}`)
     document.write(`<hr />`)
     document.write(`<hr />`)
@@ -25,53 +25,51 @@
         document.write(`<hr />`)
     }
     nNumbers(n)
-//     - Дано два цілих числа A і В . Виведіть усі числа від A до B включно, у порядку зростання, якщо A < B, або у порядку спадання якщо навпаки.
-    n2Numbers = (A,B) => {
+    //     - Дано два цілих числа A і В . Виведіть усі числа від A до B включно, у порядку зростання, якщо A < B, або у порядку спадання якщо навпаки.
+    n2Numbers = (A, B) => {
         if (A < B) {
             for (let i = A; i <= B; i++) {
                 document.write(i);
                 document.write(" ");
             }
-        }
-        else if (A > B) {
+        } else if (A > B) {
             for (let j = A; j >= B; j--) {
                 document.write(j);
                 document.write(" ");
             }
-        }
-        else {
-            document.write(A,"=",B)
+        } else {
+            document.write(A, "=", B)
         }
         document.write(`<hr />`)
     }
-    n2Numbers(a,b)
-//     -   функція Приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
-//   EXAMPLE:
-//   foo([9,8,0,4], 0) // ==> [ 8, 9, 0, 4 ]
-//   foo([9,8,0,4], 1) // ==> [ 9 ,0, 8, 4 ]
-//   foo([9,8,0,4], 2) // ==> [ 9, 8, 4, 0 ]
+    n2Numbers(a, b)
+    //     -   функція Приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
+    //   EXAMPLE:
+    //   foo([9,8,0,4], 0) // ==> [ 8, 9, 0, 4 ]
+    //   foo([9,8,0,4], 1) // ==> [ 9 ,0, 8, 4 ]
+    //   foo([9,8,0,4], 2) // ==> [ 9, 8, 4, 0 ]
     arrayI = (array) => {
-        console.log("==",array)
-        for (let i = 0; i < array.length-1; i++) {
+        console.log("==", array)
+        for (let i = 0; i < array.length - 1; i++) {
             numi = array[i];
-            numj = array[i+1];
-            [array[i],array[i+1]] = [array[i+1],array[i]];
+            numj = array[i + 1];
+            [array[i], array[i + 1]] = [array[i + 1], array[i]];
             console.log(array);
-            array[i+1] = numj;
+            array[i + 1] = numj;
             array[i] = numi;
         }
-        console.log("==",array)
+        console.log("==", array)
     }
-    arrayI([9,8,0,4])
-// - Створити функцію яка буде переносити елементи з значенням 0 у кінець масиву. Зберігаючи при цьому порядок не нульових значень.
-// Довжина масиву від 2 до 100
-// EXAMPLE:
-// [1,0,6,0,3] => [1,6,3,0,0]
-// [0,1,2,3,4] => [1,2,3,4,0]
-// [0,0,1,0]   => [1,0,0,0]
+    arrayI([9, 8, 0, 4])
+    // - Створити функцію яка буде переносити елементи з значенням 0 у кінець масиву. Зберігаючи при цьому порядок не нульових значень.
+    // Довжина масиву від 2 до 100
+    // EXAMPLE:
+    // [1,0,6,0,3] => [1,6,3,0,0]
+    // [0,1,2,3,4] => [1,2,3,4,0]
+    // [0,0,1,0]   => [1,0,0,0]
     array0 = (array) => {
         for (const arrayElement of array) {
-            for (var j = 0; j < array.length-1; j++) {
+            for (var j = 0; j < array.length - 1; j++) {
                 if (array[j] === 0) {
                     change = array[j];
                     array[j] = array[j + 1];
@@ -81,9 +79,9 @@
         }
         console.log(array)
     }
-    array0([1,0,6,0,3])
-    array0([0,1,2,3,4])
-    array0([0,0,1,0])
+    array0([1, 0, 6, 0, 3])
+    array0([0, 1, 2, 3, 4])
+    array0([0, 0, 1, 0])
 </script>
 </body>
 </html>
