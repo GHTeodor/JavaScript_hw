@@ -9,22 +9,22 @@
 </head>
 <body>
 <script>
-    let random = (min, max) => Math.round(Math.random() * (max - min) + min)
+    let random = (min, max) => Math.round(Math.random() * (max - min) + min);
     a = random(50, 100);
     b = random(50, 100);
     n = random(1, 10);
     // console.log("n=", n, " A=", a, " B=", b)
-    document.write(`n=${n} A=${a} B=${b}`)
-    document.write(`<hr />`)
-    document.write(`<hr />`)
+    document.write(`n=${n} A=${a} B=${b}`);
+    document.write(`<hr />`);
+    document.write(`<hr />`);
     //     - Дано натуральне число n. Виведіть всі числа від 1 до n.
     nNumbers = (n) => {
         for (let i = 1; i <= n; i++) {
-            document.write(i)
+            document.write(i);
         }
-        document.write(`<hr />`)
+        document.write(`<hr />`);
     }
-    nNumbers(n)
+    nNumbers(n);
     //     - Дано два цілих числа A і В . Виведіть усі числа від A до B включно, у порядку зростання, якщо A < B, або у порядку спадання якщо навпаки.
     n2Numbers = (A, B) => {
         if (A < B) {
@@ -38,18 +38,18 @@
                 document.write(" ");
             }
         } else {
-            document.write(A, "=", B)
+            document.write(A, "=", B);
         }
-        document.write(`<hr />`)
+        document.write(`<hr />`);
     }
-    n2Numbers(a, b)
+    n2Numbers(a, b);
     //     -   функція Приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
     //   EXAMPLE:
     //   foo([9,8,0,4], 0) // ==> [ 8, 9, 0, 4 ]
     //   foo([9,8,0,4], 1) // ==> [ 9 ,0, 8, 4 ]
     //   foo([9,8,0,4], 2) // ==> [ 9, 8, 4, 0 ]
     arrayI = (array) => {
-        console.log("==", array)
+        console.log("==", array);
         for (let i = 0; i < array.length - 1; i++) {
             numi = array[i];
             numj = array[i + 1];
@@ -58,9 +58,9 @@
             array[i + 1] = numj;
             array[i] = numi;
         }
-        console.log("==", array)
+        console.log("==", array);
     }
-    arrayI([9, 8, 0, 4])
+    arrayI([9, 8, 0, 4]);
     // - Створити функцію яка буде переносити елементи з значенням 0 у кінець масиву. Зберігаючи при цьому порядок не нульових значень.
     // Довжина масиву від 2 до 100
     // EXAMPLE:
@@ -77,11 +77,11 @@
                 }
             }
         }
-        console.log(array)
+        console.log(array);
     }
-    array0([1, 0, 6, 0, 3])
-    array0([0, 1, 2, 3, 4])
-    array0([0, 0, 1, 0])
+    array0([1, 0, 6, 0, 3]);
+    array0([0, 1, 2, 3, 4]);
+    array0([0, 0, 1, 0]);
 </script>
 </body>
 </html>

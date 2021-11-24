@@ -9,18 +9,17 @@
 </head>
 <body>
 <script>
-    let random = (min,limit) => Math.round(Math.random()*(limit-min))+min;
+    let random = (min, limit) => Math.round(Math.random() * (limit - min)) + min;
     a = random(100,1000);
     b = random(100,1000);
     c = random(100,1000);
-    console.log("a=",a,"b=",b,"c=",c)
+    console.log("a=", a, "b=", b, "c=", c);
     // Всі функції повинні бути описані стрілочним типом!!!!
     //     - створити функцію яка приймає три числа та виводить найменше. (Без Math.min!)
     const numberMin = (a, b, c) =>  {
-        if (a===b && b===c) {
-            console.log(a,"=",b,"=",c)
-        }
-        else if (a < b && a < c) {
+        if (a === b && b === c) {
+            console.log(a, "=", b, "=", c);
+        } else if (a < b && a < c) {
             console.log(a);
         } else if (b < c && b < a) {
             console.log(b);
@@ -31,10 +30,9 @@
     numberMin(a, b, c);
     // - створити функцію яка приймає три числа та виводить найбільше. (Без Math.max!)
     const numberMax = (a, b, c) =>  {
-        if (a===b && b===c) {
-            console.log(a,"=",b,"=",c)
-        }
-        else if (a > b && a > c) {
+        if (a === b && b === c) {
+            console.log(a, "=", b, "=", c);
+        } else if (a > b && a > c) {
             console.log(a);
         } else if (b > c && b > a) {
             console.log(b);
@@ -45,7 +43,7 @@
     numberMax(a, b, c);
     // - створити функцію яка повертає найбільше число з масиву
     arrayMax = (array) => {
-        let aMax = 0
+        let aMax = 0;
         for (const i of array) {
             if (aMax < i) {
                 aMax = i;
@@ -53,7 +51,7 @@
         }
         return console.log("З",array,"найбільше",aMax);
     }
-    arrayMax([a-b,b-c,c-a])
+    arrayMax([a - b, b - c, c - a]);
     // - створити функцію яка повертає найменше число з масиву
     arrayMax = (array) => {
         let aMin = 0
@@ -64,70 +62,70 @@
         }
         return console.log("З",array,"найменше",aMin);
     }
-    arrayMax([a-b,b-c,c-a])
+    arrayMax([a - b, b - c, c - a]);
     // - створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад [1,2,10]->13
     arrayMax = (array) => {
-        let aSum = 0
+        let aSum = 0;
         for (const i of array) {
-                aSum += + i;
+                aSum += i;
         }
         return console.log("З",array,"сума",aSum);
     }
-    arrayMax([a-b,b-c,c-a])
+    arrayMax([a - b, b - c, c - a]);
     // - створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
     arrayAverage = (array) => {
-        let aAverage = 0
+        let aAverage = 0;
         for (const i of array) {
             aAverage += + i;
         }
         aAverage /= array.length;
-        return console.log("З",array,"середнє арифметичне",aAverage);
+        return console.log("З", array, "середнє арифметичне", aAverage);
     }
-    arrayAverage([a+b,b+c,c+a])
+    arrayAverage([a + b, b + c, c + a]);
     // - створити функцію яка приймає будь-яку кількість чисел, повертає найменше, а виводить найбільше (Math використовувати заборонено);
     arrayMax = (array) => {
-        let aMax = 0
-        let aMin = 0
+        let aMax = 0;
+        let aMin = 0;
         for (const i of array) {
             if (aMax < i) {
                 aMax = i;
             }
-            if (aMin > i){
+            if (aMin > i) {
                 aMin = i;
             }
         }
-                console.log("З",array,"найбільше",aMax)
+        console.log("З", array, "найбільше", aMax);
         return console.log("Найменше",aMin);
     }
-    arrayMax([a-b,b-c,c-a])
+    arrayMax([a - b, b - c, c - a]);
     // - створити функцію яка заповнює масив рандомними числами
     // (цей код генерує рандомні числа в діапазоні від 0 до 100 - Math.round(Math.random()*100)) та виводить його.
-    const arrayRandom = (length)=> {
+    const arrayRandom = (length) => {
         let arrayEmpty = [];
-        for (let i = 0; i < length; i++){
-            arrayEmpty.push(Math.floor(Math.random()*100));
+        for (let i = 0; i < length; i++) {
+            arrayEmpty.push(Math.floor(Math.random() * 100));
         }
-    return arrayEmpty
+        return arrayEmpty;
     };
-    console.log("Random",arrayRandom(random(4,10)))
+    console.log("Random", arrayRandom(random(4, 10)));
     // - створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який характеризує кінцеве значення діапазону.
     const arrayRandomLimit = (length,Max)=> {
         let arrayEmpty = [];
-        for (let i = 0; i < length; i++){
-            arrayEmpty.push(Math.floor(Math.random()*Max));
+        for (let i = 0; i < length; i++) {
+            arrayEmpty.push(Math.floor(Math.random() * Max));
         }
-        return arrayEmpty
+        return arrayEmpty;
     };
-    console.log("RandomLimit",arrayRandomLimit(random(4,10),random(0,1000)))
+    console.log("RandomLimit", arrayRandomLimit(random(4, 10), random(0, 1000)));
     // - Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
     arrayAverage = (array) => {
-        let yarra = []
+        let yarra = [];
         for (let i = 0, ri = array.length - 1; i < array.length; i++, ri--) {
-            yarra[ri] = array[i]
+            yarra[ri] = array[i];
         }
-        return console.log(array,"У зворотньому порядку",yarra);
+        return console.log(array, "У зворотньому порядку", yarra);
     }
-    arrayAverage([a+b,b+c,c+a])
+    arrayAverage([a + b, b + c, c + a]);
 </script>
 </body>
 </html>
