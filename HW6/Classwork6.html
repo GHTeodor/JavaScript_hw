@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classwork6</title>
+</head>
+<body>
+<script>
+
+    // - Дано список імен.
+    let n1 = 'Harry..Potter'
+    let n2 = 'Ron---Whisley'
+    let n3 = 'Hermione__Granger'
+    // Написати функцію, яка приймає будь-яке не валідне імя, та нормалізує його в наступний вигляд
+        // let n1 = 'Harry Potter'
+        // let n2 = 'Ron Whisley'
+        // let n3 = 'Hermione Granger'
+    normalNames = (name) => {
+        return document.write(name
+            .replaceAll("."," ")
+            .replaceAll("-"," ")
+            .replaceAll("_"," "));
+    }
+    normalNames(n1);
+    document.write("<br/>");
+    normalNames(n2);
+    document.write("<br/>");
+    normalNames(n3);
+    document.write("<hr/>");
+
+    // - створити функцію, яка генерує масив рандомних числових цілих значень в діапазоні від 0 до 100.
+    let randomizer = (min, max) => (Math.floor(Math.random() * (max - min)) + min);
+    let randomArr = () => {
+        let arrayRandom = [];
+        for (let i = 0; i < randomizer(10,20); i++) {
+            arrayRandom.push(randomizer(0,100));
+        }
+        return arrayRandom;
+    }
+    let randomArray = randomArr();
+    document.write(randomArray);
+    document.write("<hr/>");
+
+    // - створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень. Відсортувати його за допомоги sort
+    let randomSort = () => {
+        return randomArray.sort(( a, b ) =>  a - b);
+        // return randomArray.sort(( a, b ) =>  b - a);
+    }
+    document.write(randomSort());
+    document.write("<hr/>");
+
+    // - створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень. відфільтрувати  його за допомоги filter, залишивши тільки парні числа
+    let randomFilterEven = () => {
+        return randomArray.filter(arg => arg %2 === 0);
+    }
+    document.write(randomFilterEven());
+    document.write("<hr/>");
+
+    // - створити масив рандомних цілих числових значень (або згенерувати, за допомоги попередньої функції) . за допомоги map та callback перетворити всі об'єкти в масиві на стрінгові.
+    randomMapCallback = () => {
+        return randomArray.map(arg=>(arg,`+${arg}`));
+    }
+    document.write(randomMapCallback());
+    document.write("<hr/>");
+
+    // - створити функцію sortNums(direction), яка приймає масив чисел, та сортує його від більшого до меншого, або навпаки в залежності від значення аргументу direction.
+    //     let nums = [11,21,3];
+    // sortNums('ascending') // [3,11,21]
+    // sortNums('descending') // [21,11,3]
+    let nums = [11,21,3];
+    let sortNums = (direction) => {
+        if (direction === 'ascending') {
+        return nums.sort((a,b) => a - b);
+        }
+        else if (direction === 'descending') {
+        return nums.sort((a,b) => b - a);
+        }
+    }
+    document.write(sortNums('ascending'));
+    document.write("<br/>");
+    document.write(sortNums('descending'));
+    document.write("<hr/>");
+
+    // - є масив
+    let coursesAndDurationArray = [
+        {title: 'JavaScript Complex', monthDuration: 5},
+        {title: 'Java Complex', monthDuration: 6},
+        {title: 'Python Complex', monthDuration: 6},
+        {title: 'QA Complex', monthDuration: 4},
+        {title: 'FullStack', monthDuration: 7},
+        {title: 'Frontend', monthDuration: 4}
+    ];
+    // -- відсортувати його за спаданням за monthDuration
+    console.log('Sort',coursesAndDurationArray.sort((a, b) => b.monthDuration - a.monthDuration));
+
+    // -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+    console.log('Filter',coursesAndDurationArray.filter((arg) => 5 < arg.monthDuration));
+
+    // - Напишіть функцію cutString(str, n), яка ділить строку на підстроки, яка складається з n символів.
+    // document.writeln(cutString('наслаждение',3)) // [нас,лаж,ден,ие]
+    let cutString = (str, n) => {
+        return str.slice(0, n) +","+ str.slice(n, n+n) +","+ str.slice(n+n, n+2*n) +","+ str.slice(n+2*n, n+3*n);
+    }
+    document.write(cutString('наслаждение',3));
+</script>
+</body>
+</html>
