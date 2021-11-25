@@ -10,6 +10,36 @@
 <body>
 
 <script>
+    // - Створити функцію-валідатор для адрес електронної пошти. Перевірка повинна включати в себе :данні до знака равлика(@),
+    // наявність равлика, крапку яка знаходиться не менше, ніж на 2 символи далі після равлика,
+    // функція не чутлива до регістру (some@email.com,SOME@EMAIL.COM,some@EMAIL.com, і т.д. - однакові значення)
+    // Протестувати на значеннях
+    let address1 = 'someemail@gmail.com'
+    let address2 = 'someeMAIL@gmail.com'
+    let address3 = 'someeMAIL@i.ua'
+    let address4 = 'some.email@gmail.com'
+    // Примітка
+    // Для тих, хто дуже розумний, та почне використовувати регулярні вирази одразу "ні". Своїм мозком подумайте над протоколом, з регулярками будете потім бавитись.
+    let validate = (email) => {
+        if (!email) return document.write("Не електронка");
+        email = email.toLowerCase();
+        email.indexOf("@") < email.lastIndexOf(".")-1 && email.indexOf("@",1) !== -1? document.write(email + "+") : document.write("Не електронка");
+    }
+    validate(address1);
+        document.write('<br/>');
+    validate(address2);
+        document.write('<br/>');
+    validate(address3);
+        document.write('<br/>');
+    validate(address4);
+        document.write('<br/>');
+    validate("address4");
+        document.write('<br/>');
+    validate("@ukr.net");
+        document.write('<br/>');
+    validate("@.uk");
+        document.write('<br/>');
+    document.write('<hr/>');
 
     // - є масив
     let coursesArray = [
