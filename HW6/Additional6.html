@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Additional6</title>
+</head>
+<body>
+
+<script>
+
+    // - є масив
+    let coursesArray = [
+        {
+            title: 'JavaScript Complex',
+            monthDuration: 5,
+            hourDuration: 909,
+            modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+        },
+        {
+            title: 'Java Complex',
+            monthDuration: 6,
+            hourDuration: 909,
+            modules: ['html',
+                'css',
+                'js',
+                'mysql',
+                'mongodb',
+                'angular',
+                'aws',
+                'docker',
+                'git',
+                'java core',
+                'java advanced']
+        },
+        {
+            title: 'Python Complex',
+            monthDuration: 6,
+            hourDuration: 909,
+            modules: ['html',
+                'css',
+                'js',
+                'mysql',
+                'mongodb',
+                'angular',
+                'aws',
+                'docker',
+                'python core',
+                'python advanced']
+        },
+        {
+            title: 'QA Complex',
+            monthDuration: 4,
+            hourDuration: 909,
+            modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+        },
+        {
+            title: 'FullStack',
+            monthDuration: 7,
+            hourDuration: 909,
+            modules: ['html',
+                'css',
+                'js',
+                'mysql',
+                'mongodb',
+                'react',
+                'angular',
+                'aws',
+                'docker',
+                'git',
+                'node.js',
+                'python',
+                'java']
+        },
+        {
+            title: 'Frontend',
+            monthDuration: 4,
+            hourDuration: 909,
+            modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+        }
+    ];
+    // відсортувати його в спадаючому порядку за кількістю елементів в полі modules
+    console.log('Sort',coursesArray.sort((a, b) => b.modules.length - a.modules.length));
+
+    // - Напишіть функцію count(str, stringsearch), яка повертає кількість символів stringsearch у рядку str.
+    //     let symb = "о", str = "Астрономія це наука про небесні об'єкти";
+    // document.writeln(count(str, symb)) // 5
+    let count = (str, stringsearch) => {
+        return str.slice(0, stringsearch);
+    }
+    document.write(count("Астрономія це наука про небесні об'єкти", 20));
+    document.write("<hr/>");
+
+    // - Напишіть функцію cutString(str, n), яка видаляє зайві слова з рядка str, залишивши у ній n слів.
+    //     let str = "Сила тяжіння прикладена до центру мас тіла";
+    // document.writeln(cutString(str, 5)) // 'Сила тяжіння прикладена до центру'
+    let cutString = (str, n) => {
+        return str.split(" ").slice(0, n).join(" ");
+    }
+    document.write(cutString("Сила тяжіння прикладена до центру", 5));
+
+</script>
+</body>
+</html>
