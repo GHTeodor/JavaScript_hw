@@ -116,11 +116,15 @@
 
     // - Напишіть функцію count(str, stringsearch), яка повертає кількість символів stringsearch у рядку str.
     //     let symb = "о", str = "Астрономія це наука про небесні об'єкти";
-    // document.writeln(count(str, symb)) // 5
+    // document.writeln(count(str, symb)) // 4
     let count = (str, stringsearch) => {
-        return str.slice(0, stringsearch);
+        let strPlus = "";
+        for (const symb of str) symb === stringsearch ? strPlus += symb : false;
+        return "Кількість символів '"+stringsearch+"' ["+strPlus.split("")+"] = "+strPlus.length;
     }
-    document.write(count("Астрономія це наука про небесні об'єкти", 20));
+
+    document.write(count("Астрономія це наука про небесні об'єкти", "o")); // Eng "o" ~ Ukr "щ"    // Eng "o" !== Ukr"о"
+    console.log(count("Астрономія це наука про небесні об'єкти", "о")); //Ukr "о" ~ Eng "j"    // Eng "o" !== Ukr"о"
     document.write("<hr/>");
 
     // - Напишіть функцію cutString(str, n), яка видаляє зайві слова з рядка str, залишивши у ній n слів.
