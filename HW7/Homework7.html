@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework7</title>
+</head>
+<body>
+<script>
+    // - Створити функцію конструктор для об'єктів User з полями id, name, surname , email, phone
+    // створити пустий масив, наповнити його 10 об'єктами new User(....)
+    function User (id,name,surname,email,phone) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
+    let arrayEmpty = [];
+    for (let i = 9; i >= 0; i--) {
+        arrayEmpty.push(new User(i+1,'name'+i,'surname'+i,i+'@gmail.com','+38(0'+i+i+")-"+i+i+i+"-"+i+i+"-"+i+i));
+    }
+    console.log(arrayEmpty);
+
+    // - Взяти масив з  User[] з попереднього завдання, та відфільтрувати , залишивши тільки об'єкти з парними id (filter)
+    console.log(arrayEmpty.filter((a) => !(a.id % 2)));
+
+    // - Взяти масив з  User[] з попереднього завдання, та відсортувати його по id. по зростанню (sort)
+    console.log(arrayEmpty.sort(((a, b) => a.id - b.id)));
+
+    // - створити класс для об'єктів Client з полями id, name, surname , email, phone, order (поле є масивом зі списком товарів)
+    // створити пустий масив, наповнити його 10 об'єктами Client
+    class Client{
+        constructor(id,name,surname,email,phone,order) {
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.email = email;
+            this.phone = phone;
+            this.order = [order+1,order+2,order+3,order+4,order+5,order+6,order+7,order+8,order+9,order+10];
+            this.order.length = Math.ceil(Math.random()*(10-3)+3);
+        }
+    }
+    arrayEmptyClient = [];
+    let i = 0;
+    while(i < 10) {
+        arrayEmptyClient.push(new Client(i,'name'+i,'surname'+i,i+'@gmail.com','+38(0'+i+i+")-"+i+i+i+"-"+i+i+"-"+i+i,"Товар"));
+    i++;
+    }
+    console.log(arrayEmptyClient);
+
+    // - Взяти масив (Client [] з попереднього завдання).Відсортувати його по кількості товарів в полі order по зростанню. (sort)
+    console.log(arrayEmptyClient.sort((a, b) => a.order.length - b.order.length));
+</script>
+</body>
+</html>
