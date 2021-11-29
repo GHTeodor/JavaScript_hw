@@ -18,13 +18,13 @@
         this.maxSpeed = maxSpeed;
         this.v3 = v3;
     // -- drive () - яка виводить в консоль `їдемо зі швидкістю ${максимальна швидкість} на годину`
-        this.drive = () => console.log(`Їдемо зі швидкістю ${maxSpeed} на годину`);
+        this.drive = () => console.log(`Їдемо зі швидкістю ${this.maxSpeed} км на годину`);
     // -- info () - яка виводить всю інформацію про автомобіль в форматі `назва поля - значення поля`
         this.info = () => {for (let carElement in this) (typeof this[carElement] !== 'function') ? console.log(carElement+" - "+this[carElement]): false;}
     // -- increaseMaxSpeed (newSpeed) - яка підвищує значення максимальної швидкості на значення newSpeed
-        this.increaseMaxSpeed = (newSpeed) => console.log((newSpeed + maxSpeed));
+        this.increaseMaxSpeed = (newSpeed) => console.log('Нова швидкість',this.maxSpeed += newSpeed,'км/год');
     // -- changeYear (newValue) - змінює рік випуску на значення newValue
-        this.changeYear = (newValue) => console.log(this.year = newValue);
+        this.changeYear = (newValue) => console.log(this.year = newValue,'рік');
     // -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і додає його в поточний об'єкт car
         this.addDriver = (driver) => console.log(this.driver = driver);
     }
@@ -36,6 +36,10 @@
     car.increaseMaxSpeed(50);
     car.changeYear(2021);
     car.addDriver('dRiver');
+    // console.log(car);
+    // car.drive();
+
+
 
     // - (Те саме, тільки через клас)
     class Carr {
@@ -45,10 +49,10 @@
             this.year = year;
             this.maxSpeed = maxSpeed;
             this.v3 = v3;
-            this.drive = () => console.log(`Їдемо зі швидкістю ${maxSpeed} на годину`);
+            this.drive = () => console.log(`Їдемо зі швидкістю ${this.maxSpeed} км на годину`);
             this.info = () => {for (let carElement in this) (typeof this[carElement] !== 'function') ? console.log(carElement+" - "+this[carElement]): false};
-            this.increaseMaxSpeed = (newSpeed) => console.log((newSpeed + maxSpeed));
-            this.changeYear = (newValue) => console.log(this.year = newValue);
+            this.increaseMaxSpeed = (newSpeed) => console.log('Нова швидкість',this.maxSpeed += newSpeed,'км/год');
+            this.changeYear = (newValue) => console.log(this.year = newValue,'рік');
             this.addDriver = (driver) => console.log(this.driver = driver);
         }
     }
