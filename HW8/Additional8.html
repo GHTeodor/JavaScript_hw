@@ -54,14 +54,14 @@
     function rec (startElement) {
         for (const classList of startElement) {
             if (classList.classList.length) {
-                    for (let i = 0; i < classList.classList.length; i++) {
-                        arrayClassList.push(classList.classList[i])
+                for (const res of classList.classList) {
+                    arrayClassList.push(res);
                 }
-            } else {
+                console.log(arrayClassList);
+            }else {
                 rec (classList.children);
             }
         }
-        console.log(arrayClassList);
     }
     rec(document.body.children);
 </script>
