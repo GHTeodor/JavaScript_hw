@@ -50,20 +50,23 @@
 
 <script>
     // Написати рекурсивну функцію, яка збирає всі назви класів з файлу rules.html в окремий масив. масив вивести в консоль
-    let arrayClassList = [];
     function rec (startElement) {
-        for (const classList of startElement) {
+                let arrayClassList = [];
+        for (const classList of startElement.children) {
             if (classList.classList.length) {
                 for (const res of classList.classList) {
                     arrayClassList.push(res);
                 }
-                console.log(arrayClassList);
-            }else {
-                rec (classList.children);
+            }
+            else {
+                rec (classList);
             }
         }
+        if (arrayClassList.length){
+                console.log(arrayClassList);
+        }
     }
-    rec(document.body.children);
+    rec(document.body);
 </script>
 </body>
 </html>
