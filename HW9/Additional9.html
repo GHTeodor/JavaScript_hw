@@ -253,17 +253,17 @@
             let div = document.createElement('div');
             div.style.border = 'blue solid thin';
             borders.appendChild(div);
-            if (keys !== 'address' && keys !== 'company') {
+            if (typeof values[keys] !== 'object') {
                 div.innerText = values[keys];
             }
-            else if (keys === 'company' || keys === 'address') {
+            else if (typeof values[keys] === 'object') {
                 for (const key in values[keys]) {
                 let divIn = document.createElement('div');
                 div.appendChild(divIn);
-                    if (key !== 'geo') {
+                    if (typeof values[keys][key] !== 'object') {
                         divIn.innerText = values[keys][key];
                     }
-                    else if (key === 'geo') {
+                    else if (typeof values[keys][key] === 'object') {
                         for (const k in values[keys][key]) {
                             let divIn2 = document.createElement('div');
                             divIn.appendChild(divIn2);
