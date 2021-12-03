@@ -247,23 +247,23 @@
         let borders = document.createElement('div');
         borders.style.margin = '8px';
         borders.style.width = '30vw';
-        borders.style.border = 'blue solid thick';
+        borders.style.border = 'cornflowerblue solid thick';
         document.body.appendChild(borders);
         for (const keys in values) {
             let div = document.createElement('div');
-            div.style.border = 'blue solid thin';
+            div.style.border = 'lightblue solid thin';
             borders.appendChild(div);
             if (typeof values[keys] !== 'object') {
                 div.innerText = values[keys];
             }
-            else if (typeof values[keys] === 'object') {
+            else {
                 for (const key in values[keys]) {
                 let divIn = document.createElement('div');
                 div.appendChild(divIn);
                     if (typeof values[keys][key] !== 'object') {
                         divIn.innerText = values[keys][key];
                     }
-                    else if (typeof values[keys][key] === 'object') {
+                    else {
                         for (const k in values[keys][key]) {
                             let divIn2 = document.createElement('div');
                             divIn.appendChild(divIn2);
