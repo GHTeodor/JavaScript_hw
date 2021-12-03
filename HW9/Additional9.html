@@ -243,63 +243,37 @@
             }
         ];
     // Створити під кожен елемент окремий блок. В цьому блоці, під кожну властивість, та властивості внутрішніх об'єктів створити свої окремі блоки.
-    for (const el of usersList) {
-    let divUsersList = document.createElement("div");
-        let divId = document.createElement("div");
-        let divName = document.createElement("div");
-        let divUsername = document.createElement("div");
-        let divEmail = document.createElement("div");
-        let divAddress = document.createElement("div");
-            let addressStreet = document.createElement("div");
-            let addressSuite = document.createElement("div");
-            let addressCity = document.createElement("div");
-            let addressZipCode = document.createElement("div");
-            let addressGeo = document.createElement("div");
-                let geo_lat = document.createElement("div");
-                let geo_lng = document.createElement("div");
-        let divPhone = document.createElement("div");
-        let divWebsite = document.createElement("div");
-        let divCompany = document.createElement("div");
-            let companyName = document.createElement("div");
-            let companyCatchPhrase = document.createElement("div");
-            let companyBs = document.createElement("div");
-        divUsersList.style.border = 'thick cornflowerblue solid';
-        divUsersList.style.margin = '2px';
-        divId.innerText = el.id;
-        divName.innerText = el.name;
-        divUsername.innerText = el.username;
-        divEmail.innerText = el.email;
-            addressStreet.innerText = el.address.street;
-            addressSuite.innerText = el.address.suite;
-            addressCity.innerText = el.address.city;
-            addressZipCode.innerText = el.address.zipcode;
-                geo_lat.innerText = el.address.geo.lat;
-                geo_lng.innerText = el.address.geo.lng;
-        divPhone.innerText = el.phone;
-        divWebsite.innerText = el.website;
-            companyName.innerText = el.company.name;
-            companyName.innerText = el.company.catchPhrase;
-            companyName.innerText = el.company.bs;
-    document.body.appendChild(divUsersList);
-        divUsersList.appendChild(divId);
-        divUsersList.appendChild(divName);
-        divUsersList.appendChild(divUsername);
-        divUsersList.appendChild(divEmail);
-        divUsersList.appendChild(divAddress);
-            divAddress.appendChild(addressStreet);
-            divAddress.appendChild(addressSuite);
-            divAddress.appendChild(addressCity);
-            divAddress.appendChild(addressZipCode);
-            divAddress.appendChild(addressGeo);
-                addressGeo.appendChild(geo_lat);
-                addressGeo.appendChild(geo_lng);
-        divUsersList.appendChild(divPhone);
-        divUsersList.appendChild(divWebsite);
-        divUsersList.appendChild(divCompany);
-            divCompany.appendChild(companyName);
-            divCompany.appendChild(companyCatchPhrase);
-            divCompany.appendChild(companyBs);
-    }
+    usersList.forEach(values => {
+        let borders = document.createElement('div');
+        borders.style.margin = '8px';
+        borders.style.width = '30vw';
+        borders.style.border = 'blue solid thick';
+        document.body.appendChild(borders);
+        for (const keys in values) {
+            let div = document.createElement('div');
+            div.style.border = 'blue solid thin';
+            borders.appendChild(div);
+            if (keys !== 'address' && keys !== 'company') {
+                div.innerText = values[keys];
+            }
+            else if (keys === 'company' || keys === 'address') {
+                for (const key in values[keys]) {
+                let divIn = document.createElement('div');
+                div.appendChild(divIn);
+                    if (key !== 'geo') {
+                        divIn.innerText = values[keys][key];
+                    }
+                    else if (key === 'geo') {
+                        for (const k in values[keys][key]) {
+                            let divIn2 = document.createElement('div');
+                            divIn.appendChild(divIn2);
+                                divIn2.innerText = values[keys][key][k];
+                        }
+                    }
+                }
+            }
+        }
+    })
     document.body.style.display = 'flex';
     document.body.style.flexWrap = 'wrap';
 </script>

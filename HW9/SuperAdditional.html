@@ -116,66 +116,69 @@
     divWithUsers.style.flexWrap = 'wrap';
     let divWithUsers1 = document.createElement('div');
     divWithUsers1.style.border = 'blue solid thin';
-    for (const user of users) {
-        let div = document.createElement('div');
-        div.style.border = 'ghostwhite thin dotted';
-        div.innerText = user.name + user.age + user.status + user.address.city + user.address.country + user.address.street + user.address.houseNumber;
-        divWithUsers1.appendChild(div);
-    }
+    users.forEach(user => {
+        for (const userKey in user) {
+            let span = document.createElement('span');
+            span.style.border = 'lightblue thin dotted';
+            span.style.display = 'flex';
+            if (userKey !== 'address') {
+                span.innerText = user[userKey];
+            } else if (userKey === 'address') {
+                for (const userKeyKey in user[userKey]) {
+                    let span_Adress = document.createElement('span');
+                    span.appendChild(span_Adress);
+                    span_Adress.innerText = user[userKey][userKeyKey];
+                    console.log(user[userKey][userKeyKey]);
+                }
+            }
+            // .innerText = user.name + user.age + user.status + user.address.city + user.address.country + user.address.street + user.address.houseNumber;
+            divWithUsers1.appendChild(span);
+        }
+    });
     divWithUsers.appendChild(divWithUsers1);
     // - За допомоги циклу проітерувати масив users, записати кожного user'а у свій блок за допомоги document.createElement, розділивши всі властивості по своїм блокам (div>div*4)
     let divWithUsers2 = document.createElement('div');
     divWithUsers2.style.border = 'green solid thin';
-    for (const user of users) {
-    let divWithUsers2flex = document.createElement('div');
-        let div1 = document.createElement('div');
-        let div2 = document.createElement('div');
-        let div3 = document.createElement('div');
-        let div4 = document.createElement('div');
-        divWithUsers2flex.style.display = 'flex';
-        div1.innerText = user.name;
-        div2.innerText = user.age;
-        div3.innerText = user.status;
-        div4.innerText = user.address.city + user.address.country + user.address.street + user.address.houseNumber;
-        divWithUsers2.appendChild(divWithUsers2flex);
-        divWithUsers2flex.appendChild(div1);
-        divWithUsers2flex.appendChild(div2);
-        divWithUsers2flex.appendChild(div3);
-        divWithUsers2flex.appendChild(div4);
-    }
+    users.forEach(user => {
+        for (const userKey in user) {
+            let div = document.createElement('div');
+            div.style.border = 'lightgreen thin dotted';
+            div.style.display = 'flex';
+            if (userKey !== 'address') {
+                div.innerText = user[userKey];
+            } else if (userKey === 'address') {
+                for (const userKeyKey in user[userKey]) {
+                    let span_Adress = document.createElement('span');
+                    div.appendChild(span_Adress);
+                    span_Adress.innerText = user[userKey][userKeyKey];
+                    console.log(user[userKey][userKeyKey]);
+                }
+            }
+            divWithUsers2.appendChild(div);
+        }
+    });
     divWithUsers.appendChild(divWithUsers2);
     // - За допомоги циклу проітерувати масив users, записати кожного user'а у свій блок за допомоги document.createElement, розділивши всі властивості по своїм блокам, блок з адресою зробити окремим блоком, з блоками для кожної властивості
     let divWithUsers3 = document.createElement('div');
     divWithUsers3.style.border = 'yellow solid thin';
-    for (const user of users) {
-        let divWithUsers3flex = document.createElement('div');
-        let div1 = document.createElement('div');
-        let div2 = document.createElement('div');
-        let div3 = document.createElement('div');
-        let div4 = document.createElement('div');
-        let divAddress1 = document.createElement('div');
-        let divAddress2 = document.createElement('div');
-        let divAddress3 = document.createElement('div');
-        let divAddress4 = document.createElement('div');
-        divWithUsers3flex.style.display = 'flex';
-        div4.style.display = 'flex';
-        div1.innerText = user.name;
-        div2.innerText = user.age;
-        div3.innerText = user.status;
-        divAddress1.innerText = user.address.city;
-        divAddress2.innerText = user.address.country;
-        divAddress3.innerText = user.address.street;
-        divAddress4.innerText = user.address.houseNumber;
-        divWithUsers3.appendChild(divWithUsers3flex);
-        divWithUsers3flex.appendChild(div1);
-        divWithUsers3flex.appendChild(div2);
-        divWithUsers3flex.appendChild(div3);
-        divWithUsers3flex.appendChild(div4);
-        div4.appendChild(divAddress1);
-        div4.appendChild(divAddress2);
-        div4.appendChild(divAddress3);
-        div4.appendChild(divAddress4);
-    }
+    users.forEach(user => {
+        for (const userKey in user) {
+            let div = document.createElement('div');
+            div.style.border = 'lightgreen thin dotted';
+            div.style.display = 'flex';
+            if (userKey !== 'address') {
+                div.innerText = user[userKey];
+            } else if (userKey === 'address') {
+                for (const userKeyKey in user[userKey]) {
+                    let div_Adress = document.createElement('div');
+                    div.appendChild(div_Adress);
+                    div_Adress.innerText = user[userKey][userKeyKey];
+                    console.log(user[userKey][userKeyKey]);
+                }
+            }
+            divWithUsers3.appendChild(div);
+        }
+    });
     divWithUsers.appendChild(divWithUsers3);
     document.body.appendChild(divWithUsers);
     //----------------------------------------------------------------------------------------------------------
