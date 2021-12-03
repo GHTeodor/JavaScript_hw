@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework10</title>
+</head>
+<body>
+<script>
+    // - Створити довільний елемент із id=text. Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+    let id_text = document.createElement('h1');
+    id_text.setAttribute('id','text');
+    id_text.innerText = 'Text';
+    id_text.onclick = function () {
+        id_text.style.display = 'none';
+    };
+    document.body.appendChild(id_text);
+
+    // - Створіть кнопку, при натисканні на яку вона приховуватиме сама себе.
+    let buttonHidden = document.createElement('button');
+    buttonHidden.innerText = 'Hide Me';
+    buttonHidden.onclick = function () {
+        buttonHidden.style.visibility = 'hidden';
+    };
+    document.body.appendChild(buttonHidden);
+
+    // - створити input який приймає вік людини та кнопку яка підтверджує дію. При натисканні на кнопку
+    // зчитати інформацію з input'у та перевірити вік або менше він ніж 18, та повідомити про це користувача
+    let form = document.createElement('form');
+    form.setAttribute('action', '/someaction');
+    form.onsubmit = function (e) {
+        e.preventDefault();
+        button.onclick = function () {
+            let age = input.value;
+            if (age >= 18) {
+                alert('18+');
+            }
+            else if (age < 18 && age >= 0) {
+                alert('Ще немає 18');
+            } else {
+                alert('Введіть свій вік');
+            }
+        };
+    };
+    document.body.appendChild(form);
+    let input = document.createElement('input');
+    input.setAttribute('type', 'number');
+    form.appendChild(input);
+    let button = document.createElement('button');
+    button.innerText = '+18';
+    form.appendChild(button);
+
+    // - Створіть меню, яке розкривається/згортається під час click'у
+    let menu = document.createElement('div');
+    let h4 = document.createElement('h4');
+    h4.innerText = 'Click';
+    let ul = document.createElement('ul');
+    let li = document.createElement('li');
+    i = 0;
+    do {
+        i ++;
+        ul.appendChild(li.cloneNode(true));
+    } while (i < 4)
+    h4.onclick = function () {
+        ul.style.visibility = 'hidden';
+    };
+    h4.ondblclick = function () {
+        ul.style.visibility = 'visible';
+    };
+    document.body.appendChild(menu);
+    menu.appendChild(h4)
+    menu.appendChild(ul);
+    ul.appendChild(li);
+
+    // - Створити перелік коментарів, приклад об'єкта коментаря - {title : 'lorem', body:'lorem ipsum dolo sit ameti'}.
+    // Вивести список коментарів у документ, кожен у своєму блоці.
+    // Додайте кожному коментарю за кнопкою для згортання його body.
+    let commentDiv = document.createElement('div');
+    commentDiv.style.display = 'flex';
+    let commentsArray = [
+        {title: !Math.round(Math.random()), body: 'Accusantium asperiores autem blanditiis doloribus eum labore quas rem rerum ullam voluptate.'},
+        {title: !Math.round(Math.random()), body: 'Animi blanditiis, commodi debitis eligendi eveniet ex id laborum magnam natus nemo nisi nobis provident quae quis sequi suscipit tempore.'}
+    ];
+    commentsArray.forEach(comment => {
+        let div = document.createElement('div');
+        div.style.border = 'ghostwhite thick solid';
+        commentDiv.appendChild(div);
+        let h5 = document.createElement("h5");
+        div.appendChild(h5);
+        let p = document.createElement("p");
+        div.appendChild(p);
+        h5.innerText = comment.title;
+        p.innerText = comment.body;
+        let btn = document.createElement('input');
+        btn.setAttribute('type', 'button');
+        btn.setAttribute('value', 'Згорнути');
+        btn.onclick = function () {
+            div.style.display = 'none';
+        };
+        div.appendChild(btn);
+    });
+    document.body.appendChild(commentDiv);
+</script>
+</body>
+</html>
