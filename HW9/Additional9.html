@@ -249,33 +249,22 @@
         borders.style.width = '30vw';
         borders.style.border = 'cornflowerblue solid thick';
         document.body.appendChild(borders);
-        for (const keys in values) {
-            let div = document.createElement('div');
-            div.style.border = 'lightblue solid thin';
-            borders.appendChild(div);
-            if (typeof values[keys] !== 'object') {
-                div.innerText = values[keys];
-            }
-            else {
-                for (const key in values[keys]) {
-                let divIn = document.createElement('div');
-                div.appendChild(divIn);
-                    if (typeof values[keys][key] !== 'object') {
-                        divIn.innerText = values[keys][key];
-                    }
-                    else {
-                        for (const k in values[keys][key]) {
-                            let divIn2 = document.createElement('div');
-                            divIn.appendChild(divIn2);
-                                divIn2.innerText = values[keys][key][k];
-                        }
-                    }
+        let rec = (borders,values) => {
+            for (const keys in values) {
+                let div = document.createElement('div');
+                div.style.border = 'lightblue solid thin';
+                borders.appendChild(div);
+                if (typeof values[keys] !== 'object') {
+                    div.innerText = values[keys];
+                } else {
+                    rec(div,values[keys]);
                 }
             }
+            document.body.style.display = 'flex';
+            document.body.style.flexWrap = 'wrap';
         }
-    })
-    document.body.style.display = 'flex';
-    document.body.style.flexWrap = 'wrap';
+        rec(borders,values);
+    });
 </script>
 </body>
 </html>
