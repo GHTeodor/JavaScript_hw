@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classwork10</title>
+</head>
+<body>
+<script>
+    // - створити 2 форми по 2 input'и в кожній. створити кнопку при кліку на яку зчитується та виводиться на консоль інформація з цих 2-х форм.
+    //     Кнопка повинна лежати за межами форм (Щоб уникнути перезавантаження сторінки)
+    // Доступ до input'ів через Forms API. Отже дайте формі та input'ам всі необхідні атрибути.
+    i = 0;
+    while (i < 2) {
+    let form = document.createElement("form");
+        form.setAttribute('action','/someaction');
+    document.body.appendChild(form);
+    let input1 = document.createElement("input");
+    form.appendChild(input1);
+    let input2 = document.createElement("input");
+    form.appendChild(input2);
+    let button = document.createElement("button");
+    button.innerText = 'Click';
+    form.appendChild(button);
+    form.onsubmit = function (e) {
+        e.preventDefault();
+        button.onclick = function () {
+            console.log(input1.value,input2.value);
+        };
+    }
+    i++;
+    }
+    document.body.appendChild(document.createElement('hr'));
+    // - Створити 3 input'а та кнопку. Один визначає кількість рядків, другий - кількість комірок, третій вміст комірок.
+    //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+    // (Додаткова частина для завдання)
+    let form = document.createElement("form");
+    form.setAttribute('action','/someaction');
+    document.body.appendChild(form);
+    let input1 = document.createElement("input");
+    input1.setAttribute('type', 'number');
+    input1.setAttribute('placeholder', 'Tr');
+    let input2 = document.createElement("input");
+    input2.setAttribute('type', 'number');
+    input2.setAttribute('placeholder', 'Td');
+    let input3 = document.createElement("input");
+    input3.setAttribute('placeholder', 'Content');
+    form.append(input1, input2, input3);
+    let button = document.createElement("button");
+    button.innerText = 'Table';
+    form.appendChild(button);
+    form.onsubmit = function (e) {
+        e.preventDefault();
+        button.onclick = function () {
+            let tr = input1.value;
+            let td = input2.value;
+            let content = input3.value;
+            if (tr > 300 || td > 300 || td < 0 || tr < 0) {
+                alert('Введи іншу цифру');
+            } else {
+                let table = document.createElement('table');
+                form.appendChild(table);
+                let tableFunc = (tr, td, content) => {
+                    let i = 0;
+                    while (i < tr) {
+                        let tr = document.createElement('tr');
+                        i++;
+                        let j = 0;
+                        while (j < td) {
+                            let td = document.createElement('td');
+                            td.style.border = '1px solid green';
+                            td.style.borderRadius = '20%';
+                            td.innerText = `${content}`;
+                            table.appendChild(tr);
+                            tr.appendChild(td);
+                            j++;
+                        }
+                    }
+                };
+                tableFunc(tr, td, content);
+            }
+        };
+    }
+    document.write('<hr/>');
+    // - Створити масив не цензурних слів.
+    //     Створити input текстового типу.
+    //     Якщо людина вводить слово і воно міститься в масиві не цензурних слів
+    //     Кинути alert з попередженням.
+    //     Перевірку робити при натисканні на кнопку
+    let badArray = ["засранець","коза","херня","довбане","мудило"];
+    console.log(badArray);
+    let formArr = document.createElement("form");
+    let inputArr = document.createElement("input");
+    let buttonArr = document.createElement("button");
+    buttonArr.innerText = 'Перевірити';
+    formArr.onsubmit = function (e) {
+        e.preventDefault();
+        buttonArr.addEventListener('click', function () {
+            let checker = inputArr.value;
+            for (const word of badArray) {
+                if (checker.toLowerCase() === word) {
+                    alert('Аяяяй');
+                    inputArr.value="";
+                    return;
+                }
+        }
+            if (checker) {
+                alert("Цього слова немає у списку");
+                inputArr.value="";
+
+            }
+            });
+    };
+    document.body.appendChild(formArr);
+    formArr.append(inputArr,buttonArr);
+
+    // - Створити масив не цензурних слів.
+    //     Створити input текстового типу.
+    //     Потрібно перевіряти чи не містить ціле речення в собі погані слова.
+    //     Кинути alert з попередженням у випадку якщо містить.
+    //     Перевірку робити при натисканні на кнопку
+
+</script>
+</body>
+</html>
