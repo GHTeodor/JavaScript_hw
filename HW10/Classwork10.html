@@ -93,6 +93,7 @@
     console.log(badArray);
     let formArr = document.createElement("form");
     let inputArr = document.createElement("input");
+    inputArr.setAttribute('placeholder','Введіть слово')
     let buttonArr = document.createElement("button");
     buttonArr.innerText = 'Перевірити';
     formArr.onsubmit = function (e) {
@@ -116,12 +117,39 @@
     document.body.appendChild(formArr);
     formArr.append(inputArr,buttonArr);
 
+    document.write('<hr/>');
     // - Створити масив не цензурних слів.
     //     Створити input текстового типу.
     //     Потрібно перевіряти чи не містить ціле речення в собі погані слова.
     //     Кинути alert з попередженням у випадку якщо містить.
     //     Перевірку робити при натисканні на кнопку
+    let formArr1 = document.createElement("form");
+    let inputArr1 = document.createElement("input");
+    inputArr1.setAttribute('placeholder','Введіть речення')
+    let buttonArr1 = document.createElement("button");
+    buttonArr1.innerText = 'Перевірити';
+    formArr1.onsubmit = function (e) {
+        e.preventDefault();
+        buttonArr1.addEventListener('click', function () {
+            let checker = inputArr1.value.toLowerCase().split(' ');
 
+            console.log(checker);
+            for (const word of badArray) {
+                for (const check of checker) {
+                    if (check === word) {
+                        alert('Аяяяй');
+                        inputArr1.value = "";
+                        return;
+                    }
+                }}
+                if (checker.join('')) {
+                    alert("Цього слова немає у списку");
+                    inputArr1.value = "";
+                }
+            });
+    };
+    document.body.appendChild(formArr1);
+    formArr1.append(inputArr1,buttonArr1);
 </script>
 </body>
 </html>
