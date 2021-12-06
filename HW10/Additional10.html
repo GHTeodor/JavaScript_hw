@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Additional10</title>
+</head>
+<body>
+<script>
+    // - Описати script, котрий, якщо доєднати до будь-якої сторінки дозволить зробити наступне:
+    //     При лівому click'у миші вивести в консоль інформацію про блок або елемент на який відбувся click.
+    //     Інформація яку потрібно вивести: Назва тегу, список класів, список ід, розміри в форматі висота*ширина
+    document.onclick = function (e) {
+        console.log(e.target);
+        console.log("<", e.target.tagName, ">");
+        e.target.classList.length || e.target.id ? console.log(e.target.getAttributeNames(), e.target.className + " " + e.target.id) : false;
+        console.log(getComputedStyle(e.target).height, getComputedStyle(e.target).width);
+        console.log('---------------------------------------');
+    };
+
+    // - Описати script, котрий, якщо доєднати до будь-якої сторінки дозволить зробити наступне:
+    //     При лівому click'у миші зробить popup (спливаючий блок) в якому буде вся інформація про блок.
+    //     Інформація яку потрібно вивести в popup: Назва тегу, список класів, список ід, розміри в форматі висота*ширина
+
+    // document.ondblclick = (e) => alert(`< ${e.target.tagName} > \n Class ["${e.target.className}"] \n Id ["${e.target.id}"] \n height=[${getComputedStyle(e.target).height}] \n width=[${getComputedStyle(e.target).width}] `);
+
+    // -- взяти масив користувачів
+    let usersWithAddress = [
+        {id: 1, name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+        {id: 2, name: 'petya', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
+        {id: 3, name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}},
+        {id: 4, name: 'olya', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 90}},
+        {id: 5, name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}},
+        {id: 6, name: 'anya', age: 31, status: false, address: {city: 'Kyiv', street: 'Shevchenko', number: 2}},
+        {id: 7, name: 'oleg', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 22}},
+        {id: 8, name: 'andrey', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 43}},
+        {id: 9, name: 'masha', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 12}},
+        {id: 10, name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+        {id: 11, name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
+    ];
+    // - Створити три чекбокси. Кожен з них активує фільтр для вищезгаданого масиву. Фільтри можуть працювати як разом, так і окремо.
+    // 1й - відфільтровує користувачів зі статусом false (залишає зі статусом false)
+    // 2й - залишає старше 29 років включно
+    // 3й – залишає тих у кого місто Київ
+    // Дані виводити у документ
+    let checkboxes = document.createElement("div");
+    checkboxes.style.border = 'cornflowerblue medium solid';
+    document.body.appendChild(checkboxes);
+    let checkbox1 = document.createElement("input");
+    checkbox1.setAttribute("type", "checkbox");
+    checkbox1.setAttribute("title", "status: true(false)");
+    let checkbox2 = document.createElement("input");
+    checkbox2.setAttribute("type", "checkbox");
+    checkbox2.setAttribute("title", "age>=(<)29");
+    let checkbox3 = document.createElement("input");
+    checkbox3.setAttribute("type", "checkbox");
+    checkbox3.setAttribute("title", "city: Kyiv");
+    let checkboxHide = document.createElement('div');
+    let hide = document.createElement('button');
+    hide.innerText = "Hide [ _ ]";
+    hide.onclick = function () {
+        checkboxHide.style.display = 'none';
+    };
+    let reload = document.createElement('button');
+    reload.innerText = "[ X ]";
+    reload.setAttribute('onClick', 'window.location.reload();');
+
+    checkboxes.append(checkbox1, checkbox2, checkbox3, hide, reload, checkboxHide);
+    let valueStatus = usersWithAddress.filter(value => value.status);
+    let valueAge = usersWithAddress.filter(value => value.age >= 29);
+    let valueCity = usersWithAddress.filter(value => value.address.city === 'Kyiv');
+    let valueNoStatus = usersWithAddress.filter(value => !value.status);
+    let valueNoAge = usersWithAddress.filter(value => value.age < 29);
+    let valueNoCity = usersWithAddress.filter(value => value.address.city !== 'Kyiv');
+    let recurs = (checkbox1, valueStatus, valueNoStatus) => {
+        checkbox1.onclick = function () {
+            checkboxHide.style.display = 'block';
+            let checkbox_Div = document.createElement("div");
+            checkboxHide.appendChild(checkbox_Div);
+            checkbox_Div.style.display = 'flex';
+            checkbox_Div.style.flexWrap = 'wrap';
+            checkbox_Div.style.borderBottom = 'lightblue thin dashed';
+            checkbox_Div.addEventListener("mouseenter", function () {
+                let close = document.createElement('button');
+                close.style.boxShadow = '3px 3px 10px red';
+                checkbox_Div.appendChild(close);
+                close.innerText = 'Close';
+                close.onclick = function () {
+                    checkbox_Div.style.display = 'none';
+                };
+            },{once: true});
+
+            if (this.checked) {
+                valueStatus.forEach(userWithAddress => {
+                    let ul1 = document.createElement('ul');
+                    checkbox_Div.appendChild(ul1);
+                    let recursion1 = (ul1, userWithAddress) => {
+                        for (const userWithAddressKey in userWithAddress) {
+                            let liIn = document.createElement('li');
+                            ul1.appendChild(liIn);
+                            if (typeof userWithAddress[userWithAddressKey] !== 'object') {
+                                liIn.innerText = userWithAddress[userWithAddressKey];
+                            } else {
+                                let ul1_2 = document.createElement('ul');
+                                liIn.appendChild(ul1_2);
+                                recursion1(ul1_2, userWithAddress[userWithAddressKey]);
+                            }
+                        }
+                    };
+                    recursion1(ul1, userWithAddress);
+                });
+            } else {
+                valueNoStatus.forEach(userWithAddress => {
+                    let ul1 = document.createElement('ul');
+                    checkbox_Div.appendChild(ul1);
+                    let recursion1 = (ul1, userWithAddress) => {
+                        for (const userWithAddressKey in userWithAddress) {
+                            let liIn = document.createElement('li');
+                            ul1.appendChild(liIn);
+                            if (typeof userWithAddress[userWithAddressKey] !== 'object') {
+                                liIn.innerText = userWithAddress[userWithAddressKey];
+                            } else {
+                                let ul1_2 = document.createElement('ul');
+                                liIn.appendChild(ul1_2);
+                                recursion1(ul1_2, userWithAddress[userWithAddressKey]);
+                            }
+                        }
+                    };
+                    recursion1(ul1, userWithAddress);
+                });
+            }
+        };
+    };
+    recurs(checkbox1,valueStatus,valueNoStatus);
+    recurs(checkbox2,valueAge,valueNoAge);
+    recurs(checkbox3,valueCity,valueNoCity);
+
+    // *****(Прям овердоз з рекурсією) Створити функцію яка приймає якийсь елемент DOM-структури. Функція створює в боді 2 кнопки (назад/вперед)
+    // при натисканні вперед, ви переходите до дочірнього елемента, при ще одному натисканні на "вперед", ви переходите до наступного дочірнього елемента (що лежить на одному рівні)
+    // А якщо у будь-якого дочірнього елемента є діти, то натискання "вперед" дозволяє нам увійти всередину елемента і виводить першу дитину. і т.д.
+    //     Коли всі діти закінчуються, ми виходимо з даного дочірнього елемента і переходимо до наступного, що лежить на одному рівні.
+    let divRec = document.createElement('div');
+    let back = document.createElement("button");
+    let next = document.createElement("button");
+    document.body.append(back, next, divRec);
+    back.style.backgroundColor = 'rgb(100,200,150,.5)';
+    back.style.color = 'rgb(125,100,50,.5)';
+    back.style.borderRadius = '25%';
+    next.style.backgroundColor = 'rgb(100,200,150,.5)';
+    next.style.color = 'rgb(125,100,50,.5)';
+    next.style.borderRadius = '25%';
+    back.innerText = '<-';
+    next.innerText = '->';
+    let k = 0;
+    let recursions = (divRec) => {
+        let div_Content = document.createElement('div');
+        div_Content.style.border = 'dashed violet thin';
+        div_Content.style.margin = '12px';
+        divRec.appendChild(div_Content);
+        if (k > 10) {
+            return;
+        }
+        console.log(k++);
+        recursions(div_Content);
+    };
+    recursions(divRec);
+    console.log(document.getElementsByTagName("div").length);
+    j = 0;
+    back.onclick = function backRec() {
+        document.getElementsByTagName("div")[j].style.border = 'dashed yellowgreen medium';
+        j--;
+        if (j < 0) {
+            for (const divEl of document.getElementsByTagName("div")) {
+                divEl.style.border = 'dashed violet thin';
+            }
+            j = document.getElementsByTagName("div").length - 1;
+        }
+    };
+    next.onclick = function nextRec() {
+        document.getElementsByTagName("div")[j].style.border = 'dashed greenyellow medium';
+        j++;
+        if (j > document.getElementsByTagName("div").length) {
+            for (const divEl of document.getElementsByTagName("div")) {
+                divEl.style.border = 'dashed violet thin';
+            }
+            j = 0;
+        }
+    };
+
+    // - Напишіть «Карусель» – стрічку зображень, яку можна перегортати ліворуч-право натисканням на стрілочки.
+    let carouselDiv = document.createElement('div');
+    let carouselDivImg = document.createElement("div");
+    let buttonLeft = document.createElement("button");
+    buttonLeft.innerText = ' < ';
+    buttonLeft.style.position = 'relative';
+    buttonLeft.style.bottom = '315px';
+    buttonLeft.style.background = 'rgb(50,50,50,.5)';
+    buttonLeft.style.borderRadius = '20%';
+    buttonLeft.style.height = '200px';
+    let buttonRight = document.createElement("button");
+    buttonRight.innerText = ' > ';
+    buttonRight.style.position = 'relative';
+    buttonRight.style.bottom = '315px';
+    buttonRight.style.background = 'rgb(50,50,50,.5)';
+    buttonRight.style.borderRadius = '20%';
+    buttonRight.style.height = '200px';
+    buttonRight.style.left = '503px';
+    document.body.appendChild(carouselDiv);
+    carouselDiv.append(carouselDivImg, buttonLeft, buttonRight);
+
+    let img1 = document.createElement("img");
+    img1.src = `images/1.png`;
+    let img2 = document.createElement("img");
+    img2.src = `images/2.png`;
+    let img3 = document.createElement("img");
+    img3.src = `images/3.png`;
+    let img4 = document.createElement("img");
+    img4.src = `images/4.png`;
+    let img5 = document.createElement("img");
+    img5.src = `images/5.png`;
+    carouselDivImg.append(img1, img2, img3, img4, img5);
+
+    let images = document.getElementsByTagName('img');
+    for (const image of images) {
+        image.style.width = '550px';
+        image.style.height = '400px';
+        image.style.display = 'none';
+    }
+    let i = Math.round(Math.random() * (images.length - 1));
+    images[i].style.display = 'block';
+    buttonLeft.onclick = function () {
+        images[i].style.display = 'none';
+        i--;
+        if (i < 0) {
+            i = images.length - 1;
+        }
+        images[i].style.display = 'block';
+    };
+    buttonRight.onclick = function () {
+        images[i].style.display = 'none';
+        i++;
+        if (i >= images.length) {
+            i = 0;
+        }
+        images[i].style.display = 'block';
+    };
+
+    //     Завдання важке для розуміння, але дуже легке в реалізації. Тут треба буде погуглити
+    // *** При виділенні сегменту тексту на сторінці він стає жирний/курсивний/або якось іншим способом змінює свій стан
+    let selectionChanger = document.createElement('p');
+    document.body.appendChild(selectionChanger);
+    selectionChanger.innerText = '';
+    for (let j = 0; j <1125; j++) {
+        selectionChanger.innerText += `${Math.round(Math.random())}|`;
+        if (j % 75 === 0 && j !== 0) {
+            selectionChanger.innerText += '\n';
+        }
+    }
+
+    document.addEventListener("selectionchange", () => {
+        const selection = window.getSelection().getRangeAt(0);
+        const selectedText = selection.extractContents();
+        const span = document.createElement("span");
+        span.style.fontStyle = 'oblique';
+        span.style.backgroundColor = 'blueviolet';
+        span.style.color = 'yellowgreen';
+        span.appendChild(selectedText);
+        selection.insertNode(span);
+    });
+</script>
+</body>
+</html>
