@@ -144,53 +144,53 @@
     // // А якщо у будь-якого дочірнього елемента є діти, то натискання "вперед" дозволяє нам увійти всередину елемента і виводить першу дитину. і т.д.
     // //     Коли всі діти закінчуються, ми виходимо з даного дочірнього елемента і переходимо до наступного, що лежить на одному рівні.
 
-    // let divRec = document.createElement('div');
-    // let back = document.createElement("button");
-    // let next = document.createElement("button");
-    // document.body.append(back, next, divRec);
-    // back.style.backgroundColor = 'rgb(100,200,150,.5)';
-    // back.style.color = 'rgb(125,100,50,.5)';
-    // back.style.borderRadius = '25%';
-    // next.style.backgroundColor = 'rgb(100,200,150,.5)';
-    // next.style.color = 'rgb(125,100,50,.5)';
-    // next.style.borderRadius = '25%';
-    // back.innerText = '<-';
-    // next.innerText = '->';
-    // let k = 0;
-    // let recursions = (divRec) => {
-    //     let div_Content = document.createElement('div');
-    //     div_Content.style.border = 'dashed violet thin';
-    //     div_Content.style.margin = '12px';
-    //     divRec.appendChild(div_Content);
-    //     if (k > 10) {
-    //         return;
-    //     }
-    //     console.log(k++);
-    //     recursions(div_Content);
-    // };
-    // recursions(divRec);
-    // console.log(document.getElementsByTagName("div").length);
-    // j = 0;
-    // back.onclick = function backRec() {
-    //     document.getElementsByTagName("div")[j].style.border = 'dashed yellowgreen medium';
-    //     j--;
-    //     if (j < 0) {
-    //         for (const divEl of document.getElementsByTagName("div")) {
-    //             divEl.style.border = 'dashed violet thin';
-    //         }
-    //         j = document.getElementsByTagName("div").length - 1;
-    //     }
-    // };
-    // next.onclick = function nextRec() {
-    //     document.getElementsByTagName("div")[j].style.border = 'dashed greenyellow medium';
-    //     j++;
-    //     if (j > document.getElementsByTagName("div").length) {
-    //         for (const divEl of document.getElementsByTagName("div")) {
-    //             divEl.style.border = 'dashed violet thin';
-    //         }
-    //         j = 0;
-    //     }
-    // };
+    let divRec = document.createElement('div');
+    let back = document.createElement("button");
+    let next = document.createElement("button");
+    document.body.append(back, next, divRec);
+    back.style.backgroundColor = 'rgb(100,200,150,.5)';
+    back.style.color = 'rgb(125,100,50,.5)';
+    back.style.borderRadius = '25%';
+    next.style.backgroundColor = 'rgb(100,200,150,.5)';
+    next.style.color = 'rgb(125,100,50,.5)';
+    next.style.borderRadius = '25%';
+    back.innerText = '<-';
+    next.innerText = '->';
+    let k = 0;
+    let recursions = (divRec) => {
+        let div_Content = document.createElement('div');
+        div_Content.style.border = 'dashed violet thin';
+        div_Content.style.margin = '12px';
+        divRec.appendChild(div_Content);
+        if (k > 10) {
+            return;
+        }
+        console.log(k++);
+        recursions(div_Content);
+    };
+    recursions(divRec);
+    console.log(document.getElementsByTagName("div").length);
+    j = 0;
+    back.onclick = function backRec() {
+        document.getElementsByTagName("div")[j].style.border = 'dashed yellowgreen medium';
+        j--;
+        if (j < 0) {
+            for (const divEl of document.getElementsByTagName("div")) {
+                divEl.style.border = 'dashed violet thin';
+            }
+            j = document.getElementsByTagName("div").length - 1;
+        }
+    };
+    next.onclick = function nextRec() {
+        document.getElementsByTagName("div")[j].style.border = 'dashed greenyellow medium';
+        j++;
+        if (j > document.getElementsByTagName("div").length-1) {
+            for (const divEl of document.getElementsByTagName("div")) {
+                divEl.style.border = 'dashed violet thin';
+            }
+            j = 0;
+        }
+    };
 
     // // - Напишіть «Карусель» – стрічку зображень, яку можна перегортати ліворуч-право натисканням на стрілочки.
 
@@ -254,25 +254,25 @@
     // //     Завдання важке для розуміння, але дуже легке в реалізації. Тут треба буде погуглити
     // // *** При виділенні сегменту тексту на сторінці він стає жирний/курсивний/або якось іншим способом змінює свій стан
 
-    let selectionChanger = document.createElement('p');
-    document.body.appendChild(selectionChanger);
-    selectionChanger.innerText = '';
-    for (let j = 0; j <1125; j++) {
-        selectionChanger.innerText += `${Math.round(Math.random())}|`;
-        if (j % 75 === 0 && j !== 0) {
-            selectionChanger.innerText += '\n';
-        }
-    }
-    document.addEventListener("selectionchange", () => {
-        const selection = window.getSelection().getRangeAt(0);
-        const selectedText = selection.extractContents();
-        const span = document.createElement("span");
-        span.style.fontStyle = 'oblique';
-        span.style.backgroundColor = 'blueviolet';
-        span.style.color = 'yellowgreen';
-        span.appendChild(selectedText);
-        selection.insertNode(span);
-    });
+    // let selectionChanger = document.createElement('p');
+    // document.body.appendChild(selectionChanger);
+    // selectionChanger.innerText = '';
+    // for (let j = 0; j <1125; j++) {
+    //     selectionChanger.innerText += `${Math.round(Math.random())}|`;
+    //     if (j % 75 === 0 && j !== 0) {
+    //         selectionChanger.innerText += '\n';
+    //     }
+    // }
+    // document.addEventListener("selectionchange", () => {
+    //     const selection = window.getSelection().getRangeAt(0);
+    //     const selectedText = selection.extractContents();
+    //     const span = document.createElement("span");
+    //     span.style.fontStyle = 'oblique';
+    //     span.style.backgroundColor = 'blueviolet';
+    //     span.style.color = 'yellowgreen';
+    //     span.appendChild(selectedText);
+    //     selection.insertNode(span);
+    // });
 
 </script>
 </body>
