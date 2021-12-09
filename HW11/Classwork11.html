@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classwork11</title>
+</head>
+<body>
+<script>
+    // є масив -
+    let users = [
+        {name: 'vasya', age: 31, status: false},
+        {name: 'petya', age: 30, status: true},
+        {name: 'kolya', age: 29, status: true},
+        {name: 'olya', age: 28, status: false},
+        {name: 'max', age: 30, status: true},
+        {name: 'anya', age: 31, status: false},
+        {name: 'oleg', age: 28, status: false},
+        {name: 'andrey', age: 29, status: true},
+        {name: 'masha', age: 30, status: true},
+        {name: 'olya', age: 31, status: false},
+        {name: 'max', age: 31, status: true}
+    ];
+    // створити під кожен об'єкт свій блок з конопкою "додати до улюблених" при натисканні на яку об'єкт потрапляє до масиву favorites улюблених обраних об'єктів в локальному сховищі.
+    // Створити сторніку favorites.html при переході на яку потрібно вивест в документ всіх обраних на попередньому етапі.
+    let favourites_Div = document.createElement("div");
+    favourites_Div.style.display = "grid";
+    favourites_Div.style.gridTemplateColumns = "repeat(2, 1fr)";
+    let a_favourites = document.createElement("a");
+    a_favourites.innerText = "Favourites";
+    a_favourites.href = "./Favourites_CW.html";
+    a_favourites.style.border = "dashed thin violet";
+    a_favourites.style.backgroundColor = "gold";
+    document.body.append(a_favourites, favourites_Div);
+
+    localStorage.setItem("Favourites", JSON.stringify([]));
+
+    users.forEach(user => {
+        let div = document.createElement("div");
+        div.style.display = "flex";
+        div.style.borderBottom = "thin solid silver";
+        for (const userKey in user) {
+            let italic = document.createElement("italic");
+            italic.innerText = userKey + ": " + user[userKey] + " |";
+            div.appendChild(italic);
+        }
+        let button = document.createElement("button");
+        button.innerText = "Add to favourites";
+        favourites_Div.append(div, button);
+
+        button.onclick = () => {
+            let favourites = JSON.parse(localStorage.getItem("Favourites"));
+            favourites.push(user);
+            localStorage.setItem("Favourites", JSON.stringify(favourites));
+            button.disabled = true;
+        };
+    });
+
+</script>
+</body>
+</html>

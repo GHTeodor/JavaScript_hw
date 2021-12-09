@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework11</title>
+</head>
+<body>
+<script>
+    // -створити форму з інпутами для name та age.
+    //     При відправці форми записати об'єкт в localstorage
+    let form1 = document.createElement("form");
+    document.body.appendChild(form1);
+    let name = document.createElement("input");
+    name.setAttribute("placeholder", "name");
+    let age = document.createElement("input");
+    age.setAttribute("placeholder", "age");
+    age.setAttribute("type", "number");
+    let button1 = document.createElement("button");
+    button1.innerText = "toLocalStorage";
+    form1.append(name, age, button1);
+
+        button1.onclick = () => {
+            localStorage.setItem(name.value, age.value);
+        };
+
+    // -створити форму з інпутами для model,type та volume автівки.
+    //     при відпарвці форми об'єкти зберігаються в масиві в локальному сховищі.
+    let form2 = document.createElement("form");
+    document.body.appendChild(form2);
+    let model = document.createElement("input");
+    model.setAttribute("placeholder", "model");
+    let type = document.createElement("input");
+    type.setAttribute("placeholder", "type");
+    let volume = document.createElement("input");
+    volume.setAttribute("placeholder", "volume");
+    volume.setAttribute("type", "number");
+    let button2 = document.createElement("button");
+    button2.innerText = "toLocalStorage";
+    form2.append(model, type, volume, button2);
+
+        button2.onclick = () => {
+            let array_Local_Storage = JSON.stringify([model.value, type.value, volume.value]);
+            localStorage.setItem("Car", array_Local_Storage);
+        };
+
+</script>
+</body>
+</html>
