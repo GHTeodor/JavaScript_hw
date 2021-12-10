@@ -41,9 +41,11 @@
     button2.innerText = "toLocalStorage";
     form2.append(model, type, volume, button2);
 
-        button2.onclick = () => {
-            let array_Local_Storage = JSON.stringify([model.value, type.value, volume.value]);
-            localStorage.setItem("Car", array_Local_Storage);
+    button2.onclick = () => {
+        let array_Local_Storage = JSON.parse(localStorage.getItem("Car")) || [];
+
+        array_Local_Storage.push([model.value, type.value, volume.value])
+        localStorage.setItem("Car", JSON.stringify(array_Local_Storage));
         };
 
 </script>
