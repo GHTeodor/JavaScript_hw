@@ -26,7 +26,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
                 for (const postElement in post) {
                     let li = document.createElement('li');
                     ul.appendChild(li);
-                    li.innerHTML = `<b>${postElement}:</b> <i> ${post[postElement]}</i>`;
+                    li.innerHTML = `<b>${postElement}:</b> <i>${post[postElement]}</i>`;
                 }
             }
         });

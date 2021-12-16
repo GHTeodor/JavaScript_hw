@@ -46,7 +46,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
             button.style.display = "block";
             button.style.borderRadius = "6px";
             p.innerText = user.id + " - " + user.name;
-            button.innerHTML = `<i>${user.username} </i>-<b> Info</b>`;
+            button.innerHTML = `<i>${user.username}</i> - <b>Info</b>`;
             div.append(p, button);
             wrapper.appendChild(div);
         }
